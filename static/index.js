@@ -11,18 +11,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     socket = new WebSocket(wsUri);
     socket.onopen = () => {
-      console.log("connected");
+      document.getElementById("status").innerText = "연결됨";
     };
     socket.onmessage = (ev) => {
       document.getElementById("word").innerText = ev.data;
     };
     socket.onclose = () => {
-      console.log("disconnected");
       onclose();
     };
+
+    document.getElementById("status").innerText = "연결 중...";
+    document.getElementById("connect").style.display = "none";
   }
 
   function onclose() {
+    document.getElementById("status").innerText = "연결 끊김";
+    document.getElementById("connect").style.display = "block";
   }
 
   function disconnect() {
@@ -31,6 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
       onclose();
     }
   }
+
+  document.getElementById('connect').addEventListener('click', connect);
 
   connect();
 });

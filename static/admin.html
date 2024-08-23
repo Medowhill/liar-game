@@ -7,15 +7,18 @@
     <link rel="stylesheet" href="admin.css">
 </head>
 <body>
-  <div>
-    <label for="word">Word</label>
-    <input type="text" id="word" name="word">
+  <div id="input" style="display:none;">
+    <div>
+      <label for="word">제시어</label>
+      <input type="text" id="word" name="word">
+    </div>
+    <div>
+      <label for="liar-word">라이어 제시어</label>
+      <input type="text" id="liar-word" name="liar-word">
+    </div>
+    <button id="button">보내기</button>
   </div>
-  <div>
-    <label for="liar-word">Liar word</label>
-    <input type="text" id="liar-word" name="liar-word">
-  </div>
-  <button id="button">Submit</button>
+  <button id="connect" style="display:none;">연결하기</button>
   <script src="admin.js"></script>
 </body>
 </html>

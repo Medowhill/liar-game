@@ -11,17 +11,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     socket = new WebSocket(wsUri);
     socket.onopen = () => {
-      console.log("connected");
+      document.getElementById("input").style.display = "block";
     };
     socket.onmessage = (ev) => {
     };
     socket.onclose = () => {
-      console.log("disconnected");
       onclose();
     };
+
+    document.getElementById("connect").style.display = "none";
   }
 
   function onclose() {
+    document.getElementById("input").style.display = "none";
+    document.getElementById("connect").style.display = "block";
   }
 
   function disconnect() {
@@ -38,6 +41,8 @@ document.addEventListener("DOMContentLoaded", () => {
       socket.send(`${word},${liarWord}`);
     }
   });
+
+  document.getElementById('connect').addEventListener('click', connect);
 
   connect();
 });
